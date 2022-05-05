@@ -1,0 +1,16 @@
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
+/Users/yuna/.rbenv/versions/2.7.5/bin/ruby -I /Users/yuna/.rbenv/versions/2.7.5/lib/ruby/site_ruby/2.7.0 -r ./siteconf20220505-40690-1lcah3a.rb extconf.rb
+checking for onig_region_memsize() in ruby.h... yes
+creating Makefile
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
+make DESTDIR\= clean
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
+make DESTDIR\=
+compiling strscan.c
+linking shared-object strscan.bundle
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 strscan.bundle ./.gem.20220505-40690-uwne0q

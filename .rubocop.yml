@@ -1,0 +1,18 @@
+inherit_from: 
+  - .rubocop_todo.yml
+  - .rubocop_airbnb.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    - 'bin/**'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'lib/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'script/**/*'
+    - 'Gemfile'
+  NewCops: enable

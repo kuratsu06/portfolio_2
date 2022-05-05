@@ -1,0 +1,15 @@
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/Users/yuna/.rbenv/versions/2.7.5/bin/ruby -I /Users/yuna/.rbenv/versions/2.7.5/lib/ruby/site_ruby/2.7.0 -r ./siteconf20220505-40690-1jo21y6.rb extconf.rb
+creating Makefile
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= clean
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\=
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20220505-40690-1nzjlwt

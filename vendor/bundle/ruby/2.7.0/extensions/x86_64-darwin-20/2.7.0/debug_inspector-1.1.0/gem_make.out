@@ -1,0 +1,15 @@
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+/Users/yuna/.rbenv/versions/2.7.5/bin/ruby -I /Users/yuna/.rbenv/versions/2.7.5/lib/ruby/site_ruby/2.7.0 -r ./siteconf20220505-40690-1ytvhj9.rb extconf.rb
+creating Makefile
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= clean
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\=
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/yuna/portfolio_2/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20220505-40690-14fw84e
