@@ -1,2 +1,6 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<% @genres.each do |genre| %>
+  <%= genre.name %>
+  <%= link_to "new_content", new_content_path(genre_id: genre.id) %>
+<% end %>

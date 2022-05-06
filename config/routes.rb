@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root to: 'home#top'
     devise_for :users
     resources :categories
+    resources :contents
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

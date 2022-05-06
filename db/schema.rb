@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_06_093942) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_06_100446) do
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "genre_id", null: false
@@ -19,6 +19,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_093942) do
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_categories_on_genre_id"
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "contents", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "genre_id", null: false
+    t.bigint "category_id", null: false
+    t.string "title", null: false
+    t.string "author", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_contents_on_category_id"
+    t.index ["genre_id"], name: "index_contents_on_genre_id"
+    t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
   create_table "genres", charset: "utf8mb3", force: :cascade do |t|
@@ -41,4 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_093942) do
 
   add_foreign_key "categories", "genres"
   add_foreign_key "categories", "users"
+  add_foreign_key "contents", "categories"
+  add_foreign_key "contents", "genres"
+  add_foreign_key "contents", "users"
 end
