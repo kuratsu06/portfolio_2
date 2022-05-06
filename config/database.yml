@@ -7,9 +7,8 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  database: blog_development
+  database: portfolio_2_development
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
   username: root
   password: password
   socket: /tmp/mysql.sock
@@ -17,15 +16,15 @@ default: &default
 
 development:
   <<: *default
-  database: db/development.mysql2
+  database: portfolio_2_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.mysql2
+  database: portfolio_2_test
 
 production:
   <<: *default
-  database: db/production.mysql2
+  database: portfolio_2_production

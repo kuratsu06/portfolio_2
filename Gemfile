@@ -50,6 +50,7 @@ gem "sassc-rails"
 
 gem 'rails-i18n'
 gem 'jquery-rails'
+gem 'uglifier'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise-i18n'

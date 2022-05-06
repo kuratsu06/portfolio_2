@@ -1,7 +1,19 @@
 <div class="header">
-  <div>
+  <div class="header_bar_left">
     <%= link_to root_path do %>
       <%= image_tag "site_logo.png" %>
+    <% end %>
+  </div>
+  <div class="header_bar_right">
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "login" %>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to "ログイン", new_user_session_path, class: "login" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "login" %>
+      </div>
     <% end %>
   </div>
 </div>
