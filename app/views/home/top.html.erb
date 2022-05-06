@@ -3,4 +3,5 @@
 <% @genres.each do |genre| %>
   <%= genre.name %>
   <%= link_to "new_content", new_content_path(genre_id: genre.id) %>
+  <%= link_to "new_post", new_post_path(genre_id: genre.id) %>
 <% end %>
