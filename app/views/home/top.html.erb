@@ -1,7 +1,68 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<% @genres.each do |genre| %>
-  <%= genre.name %>
-  <%= link_to "new_content", new_content_path(genre_id: genre.id) %>
-  <%= link_to "new_post", new_post_path(genre_id: genre.id) %>
-<% end %>
+<div class="top_page">
+  <div class="side_bar">
+    <div class="search">
+      <div class="search_field">
+        <%= form_tag categories_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], placeholder: "カテゴリーを探す..." %>
+          <%= submit_tag '検索', :name => nil %>
+        <% end %>
+      </div>
+      <div class="search_field">
+        <%= form_tag contents_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], placeholder: "作品を探す..." %>
+          <%= submit_tag '検索', :name => nil %>
+        <% end %>
+      </div>
+      <div class="search_field">
+        <%= form_tag posts_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], placeholder: "日記を探す..." %>
+          <%= submit_tag '検索', :name => nil %>
+        <% end %>
+      </div>
+    </div>
+    <% @genres.each do |genre| %>
+      <details>
+        <summary><div class="genre_name"><%= genre.name %></div></summary>
+          <ui>
+            <% genre.categories.each do |category| %>
+              <li class="category_name"><%= category.name %><span>(<%= category.posts.count %>)</span></li>
+            <% end %>
+          </ul>
+      </details>
+    <% end %>
+  </div>
+
+  <div class="main_content">
+    <p class="notice"><%= notice %></p>
+    <!--<p class="alert"><%= alert %></p>-->
+    <div class="content_box">
+      <h3>最近登録したコンテンツ</h3>
+      <div class="index">
+        <% @contents.each do |content| %>
+          <p>作成日：<%= content.created_at.strftime('%Y年 %m月 %d日') %></p>
+          <p>作品タイトル：<%= content.title %></p>
+          <div class="links">
+            <%= link_to "詳細", content_path(content) %>
+            <%= link_to "編集", edit_content_path(content, @genres) %>
+            <%= link_to "削除", content, method: :delete, data: { confirm: "本当によろしいですか？" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="content_box">
+      <h3>最近投稿した日記</h3>
+      <div class="index">
+        <% @posts.each do |post| %>
+          <p>投稿日：<%= post.created_at.strftime('%Y年 %m月 %d日') %></p>
+          <p>サブタイトル：<%= post.subtitle %></p>
+          <p>日記：<%= post.diary %></p>
+          <div class="links">
+            <%= link_to "詳細", post_path(post) %>
+            <%= link_to "編集", edit_post_path(post, @genres) %>
+            <%= link_to "削除", post, method: :delete, data: { confirm: "本当によろしいですか？" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

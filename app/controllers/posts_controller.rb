@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.search(params[:search])
   end
 
   # GET /posts/1 or /posts/1.json
@@ -19,6 +19,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @genre = Genre.all
+    @category = Category.all    
   end
 
   # POST /posts or /posts.json

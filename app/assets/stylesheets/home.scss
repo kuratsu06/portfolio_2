@@ -1,0 +1,90 @@
+.top_page {
+	display: flex;
+}
+
+.side_bar {
+	width: 20%;
+	min-height: 100vh;
+	border-right: 3px #000 solid;
+}
+
+.search {
+	margin-top: 20px;
+}
+
+.search_field {
+	font-size: 16px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.search_field input[type = text] {
+	padding: 6px 10px;
+}
+
+.search_field input[type = submit] {
+	color: #fff;
+	background-color: #000;
+	border: 1px #000 solid;
+	padding: 6px 10px;
+}
+
+.genre_name {
+	color: #fff;
+	font-size: 26px;
+	font-weight: bold;
+	background-color: #000;
+	border: 1px #000 solid;
+	text-align: right;
+	padding: 20px 30px 20px 10px;
+}
+
+.category_name {
+	font-size: 20px;
+	margin: 20px auto 20px 20px;
+}
+
+.category_name span {
+	margin-left: 10px;
+}
+
+.main_content {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content_box h3 {
+	color: #fff;
+	font-weight: bold;
+	background-color: #000;
+	border: 1px #000 solid;
+	margin-top: 0;
+	padding: 10px;
+}
+
+.content_box {
+	width: 800px;
+	border: 3px #000 solid;
+	margin: 50px auto;
+}
+
+.content_box p {
+	font-size: 20px;
+	border-bottom: 1px #808080 dashed;
+	margin: 10px 50px;
+}
+
+.index {
+	border-bottom:3px #808080 solid ;
+}
+
+.links {
+	margin-left: 600px;
+}
+
+.links a {
+	font-size: 16px;
+	margin: 10px;
+}
+

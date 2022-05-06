@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
 
   # GET /contents or /contents.json
   def index
-    @contents = Content.all
+    @contents = Content.search(params[:search])
   end
 
   # GET /contents/1 or /contents/1.json
@@ -19,6 +19,8 @@ class ContentsController < ApplicationController
 
   # GET /contents/1/edit
   def edit
+    @genre = Genre.all
+    @category = Category.all
   end
 
   # POST /contents or /contents.json
