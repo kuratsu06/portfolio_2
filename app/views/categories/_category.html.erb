@@ -1,12 +1,18 @@
 <div id="<%= dom_id category %>">
-  <p>
-    <strong>Genre:</strong>
-    <%= category.genre.name %>
-  </p>
+  <div class="index_box">
+    <p>
+      <strong>ジャンル:</strong>
+      <span class="next_colon"><%= category.genre.name %></span>
+    </p>
 
-  <p>
-    <strong>Name:</strong>
-    <%= category.name %>
-  </p>
+    <p>
+      <strong>カテゴリ名:</strong>
+      <span class="next_colon"><%= category.name %></span>
+    </p>
 
+    <div class="links">
+      <%= link_to "編集", edit_category_path(category) %>
+      <%= link_to "削除", category, method: :delete, data: { confirm: "本当によろしいですか？" } %>
+    </div>
+  </div>
 </div>

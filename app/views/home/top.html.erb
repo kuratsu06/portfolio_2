@@ -1,36 +1,5 @@
 <div class="top_page">
-  <div class="side_bar">
-    <div class="search">
-      <div class="search_field">
-        <%= form_tag categories_path, :method => 'get' do %>
-          <%= text_field_tag :search, params[:search], placeholder: "カテゴリーを探す..." %>
-          <%= submit_tag '検索', :name => nil %>
-        <% end %>
-      </div>
-      <div class="search_field">
-        <%= form_tag contents_path, :method => 'get' do %>
-          <%= text_field_tag :search, params[:search], placeholder: "作品を探す..." %>
-          <%= submit_tag '検索', :name => nil %>
-        <% end %>
-      </div>
-      <div class="search_field">
-        <%= form_tag posts_path, :method => 'get' do %>
-          <%= text_field_tag :search, params[:search], placeholder: "日記を探す..." %>
-          <%= submit_tag '検索', :name => nil %>
-        <% end %>
-      </div>
-    </div>
-    <% @genres.each do |genre| %>
-      <details>
-        <summary><div class="genre_name"><%= genre.name %></div></summary>
-          <ui>
-            <% genre.categories.each do |category| %>
-              <li class="category_name"><%= category.name %><span>(<%= category.posts.count %>)</span></li>
-            <% end %>
-          </ul>
-      </details>
-    <% end %>
-  </div>
+  <%= render 'home/side_bar' %>
 
   <div class="main_content">
     <p class="notice"><%= notice %></p>

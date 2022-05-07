@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :side_bar, only: %i[ index new ]
 
   # GET /categories or /categories.json
   def index
@@ -18,6 +19,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @genres = Genre.all
   end
 
   # POST /categories or /categories.json
@@ -62,6 +64,13 @@ class CategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
+    end
+
+    def side_bar
+      @genres = Genre.all
+      @category = Category.all
+      @contents = Content.order(updated_at: :desc).limit(3)
+      @posts = Post.order(updated_at: :desc).limit(3)
     end
 
     # Only allow a list of trusted parameters through.

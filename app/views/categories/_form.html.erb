@@ -12,18 +12,28 @@
   <% end %>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
+  
+  <div class="form_box">
+    <div class="form_field">
+      <%= form.label :genre_id, "ジャンル：", style: "display: block" %>
+      <span class="next_colon">
+        <%= form.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id] }, include_blank: "選択して下さい" %>
+      </span>
+    </div>
 
-  <div>
-    <%= form.label :genre_id, style: "display: block" %>
-    <%= form.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id] }, include_blank: "選択して下さい" %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <div class="form_field">
+      <%= form.label :name, "カテゴリ名：", style: "display: block" %>
+      <span class="next_colon">
+        <%= form.text_field :name %>
+      </span>
+    </div>
+  
+    <div>
+      <% if (controller.action_name == 'new') %>
+        <%= form.submit "登録", class: "actions_btn" %>
+      <% else %>
+        <%= form.submit "更新", class: "actions_btn" %>
+      <% end %>
+    </div>
   </div>
 <% end %>

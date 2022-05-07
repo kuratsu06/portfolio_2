@@ -1,14 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div class="top_page">
+  <%= render 'home/side_bar' %>
 
-<h1>Categories</h1>
-
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
+  <div class="main_content">
+    <p style="color: green"><%= notice %></p>
+    <div class="content_title">
+      <h3>カテゴリ一覧</h3>
+      <%= link_to "新規登録", new_category_path %>
+    </div>
+    <div id="categories" class="content_box">
+      <% @categories.each do |category| %>
+        <%= render category %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New category", new_category_path %>
