@@ -1,10 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class="top_page">
+  <%= render 'home/side_bar' %>
 
-<%= render @post %>
-
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %>
+  <div class="main_content">
+    <p style="color: green"><%= notice %></p>
+    <div class="content_title">
+      <h3>- <%= @post.subtitle %> -</h3>
+    </div>
+    <div class="back">
+      <%= link_to "一覧に戻る", posts_path %>
+    </div>
+    <div class="content_box">
+      <%= render @post %>
+      <div class="links">
+        <%= link_to "編集", edit_post_path(@post, genre_id: @genre_id) %> |
+        <%= link_to "削除", @post, method: :delete %>
+      </div>
+    </div>
+  </div>
 </div>

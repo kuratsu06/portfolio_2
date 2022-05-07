@@ -11,8 +11,7 @@
           <p>作成日：<%= content.created_at.strftime('%Y年 %m月 %d日') %></p>
           <p>作品タイトル：<%= content.title %></p>
           <div class="links">
-            <%= link_to "詳細", content_path(content) %>
-            <%= link_to "編集", edit_content_path(content, @genres) %>
+            <%= link_to "編集", edit_content_path(content, @genres) %> |
             <%= link_to "削除", content, method: :delete, data: { confirm: "本当によろしいですか？" } %>
           </div>
         <% end %>
@@ -26,8 +25,8 @@
           <p>サブタイトル：<%= post.subtitle %></p>
           <p>日記：<%= post.diary %></p>
           <div class="links">
-            <%= link_to "詳細", post_path(post) %>
-            <%= link_to "編集", edit_post_path(post, @genres) %>
+            <%= link_to "詳細", post_path(post) %> |
+            <%= link_to "編集", edit_post_path(post, @genres) %> |
             <%= link_to "削除", post, method: :delete, data: { confirm: "本当によろしいですか？" } %>
           </div>
         <% end %>

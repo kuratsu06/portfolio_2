@@ -13,28 +13,35 @@
 
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :genre_id, value: @genre.ids %>
+  <%= form.hidden_field :category_id, value: @category.ids %>
 
-  <div>
-    <%= form.label :category_id, style: "display: block" %>
-    <%= form.select :category_id, Category.all.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
-  </div>
+  <div class="form_box">
+    <div class="form_field">
+      <%= form.label :content_id, "コンテンツ：", style: "display: block" %>
+      <span class="next_colon">
+        <%= form.select :content_id, Content.all.map{ |content| [content.title, content.id] }, include_blank: "選択して下さい" %>
+    </div>
 
-  <div>
-    <%= form.label :content_id, style: "display: block" %>
-    <%= form.select :content_id, Content.all.map{ |content| [content.title, content.id] }, include_blank: "選択して下さい" %>
-  </div>
+    <div class="form_field">
+      <%= form.label :subtitle, "サブタイトル：", style: "display: block" %>
+      <span class="next_colon">
+        <%= form.text_field :subtitle %>
+      </span>
+    </div>
 
-  <div>
-    <%= form.label :subtitle, style: "display: block" %>
-    <%= form.text_field :subtitle %>
-  </div>
-
-  <div>
-    <%= form.label :diary, style: "display: block" %>
-    <%= form.text_area :diary %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <div>
+      <% if (controller.action_name == 'new') %>
+        <%= form.submit "登録", class: "actions_btn" %>
+      <% else %>
+        <%= form.submit "更新", class: "actions_btn" %>
+      <% end %>
+    </div>
+  </div><br/>
+  
+  <div class="form_field2">
+    <%= form.label :diary, "日記：", style: "display: block" %>
+    <span class="next_colon">
+      <%= form.text_area :diary %>
+    </span>
   </div>
 <% end %>

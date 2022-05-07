@@ -1,31 +1,26 @@
 <div id="<%= dom_id post %>">
   <p>
-    <strong>User:</strong>
-    <%= post.user_id %>
+    <strong>投稿日：</strong>
+    <%= post.created_at.strftime('%Y年 %m月 %d日') %>
   </p>
 
   <p>
-    <strong>Genre:</strong>
-    <%= post.genre_id %>
+    <strong>カテゴリ：</strong>
+    <%= post.category.name %>
   </p>
 
   <p>
-    <strong>Category:</strong>
-    <%= post.category_id %>
+    <strong>コンテンツ：</strong>
+    <%= post.content.title %>
   </p>
 
   <p>
-    <strong>Content:</strong>
-    <%= post.content_id %>
-  </p>
-
-  <p>
-    <strong>Subtitle:</strong>
+    <strong>サブタイトル：</strong>
     <%= post.subtitle %>
   </p>
 
   <p>
-    <strong>Diary:</strong>
+    <strong>日記：</strong>
     <%= post.diary %>
   </p>
 

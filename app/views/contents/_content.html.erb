@@ -29,7 +29,7 @@
     </p>
 
     <div class="links">
-      <%= link_to "編集", edit_content_path(content, genre_id: @genre_id) %>
+      <%= link_to "編集", edit_content_path(content, genre_id: @genre_id) %> |
       <%= link_to "削除", content, method: :delete, data: { confirm: "本当によろしいですか？" } %>
     </div>
   </div>

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :side_bar, only: %i[ index new show ]
 
   # GET /posts or /posts.json
   def index
@@ -20,6 +21,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @genre = Genre.all
+    @genres = Genre.all
     @category = Category.all    
   end
 
@@ -65,6 +67,13 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def side_bar
+      @genres = Genre.all
+      @category = Category.all
+      @contents = Content.order(updated_at: :desc).limit(3)
+      @posts = Post.order(updated_at: :desc).limit(3)
     end
 
     # Only allow a list of trusted parameters through.

@@ -22,13 +22,20 @@
   <% @genres.each do |genre| %>
     <details>
       <summary><div class="genre_name"><%= genre.name %></div></summary>
-        <ui>
-          <% genre.categories.each do |category| %>
-            <%= link_to categories_path(:search => category.name) do %>
+      <ui>
+        <% genre.categories.each do |category| %>
+          <details>
+            <summary>
               <li class="category_name"><%= category.name %><span>(<%= category.posts.count %>)</span></li>
-            <% end %>
-          <% end %>
-        </ul>
+            </summary>
+            <ul>
+              <% category.contents.each do |content| %>
+                <li class="content_name"><%= content.title %><span>(<%= content.posts.count %>)</span></li>
+              <% end %>
+            </ul>
+          </details>
+        <% end %>
+      </ul>
     </details>
   <% end %>
 </div>
