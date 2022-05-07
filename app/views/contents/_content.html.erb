@@ -1,22 +1,36 @@
 <div id="<%= dom_id content %>">
-  <p>
-    <strong>Genre:</strong>
-    <%= content.genre.name %>
-  </p>
+  <div class="index_box">
+    <p>
+      <strong>ジャンル：</strong>
+      <span class="next_colon"><%= content.genre.name %></span>
+    </p>
 
-  <p>
-    <strong>Category:</strong>
-    <%= content.category.name %>
-  </p>
+    <p>
+      <strong>カテゴリ名：</strong>
+      <span class="next_colon"><%= content.category.name %></span>
+    </p>
 
-  <p>
-    <strong>Title:</strong>
-    <%= content.title %>
-  </p>
+    <p>
+      <strong>作品名：</strong>
+      <span class="next_colon"><%= content.title %></span>
+    </p>
 
-  <p>
-    <strong>Author:</strong>
-    <%= content.author %>
-  </p>
+    <p>
+      <% if (content.genre_id === 1) %>
+        <strong>著者名：</strong>
+      <% elsif (content.genre_id === 2) %>
+        <strong>作者名：</strong>
+      <% elsif (content.genre_id === 3) %>
+        <strong>監督名・出演者名など：</strong>
+      <% else %>
+        <strong>アーティスト名：</strong>
+      <% end %>
+      <span class="next_colon"><%= content.author %></span>
+    </p>
 
+    <div class="links">
+      <%= link_to "編集", edit_content_path(content, genre_id: @genre_id) %>
+      <%= link_to "削除", content, method: :delete, data: { confirm: "本当によろしいですか？" } %>
+    </div>
+  </div>
 </div>

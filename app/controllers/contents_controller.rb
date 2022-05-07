@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: %i[ show edit update destroy ]
+  before_action :side_bar, only: %i[ index new ]
 
   # GET /contents or /contents.json
   def index
@@ -13,14 +14,15 @@ class ContentsController < ApplicationController
   # GET /contents/new
   def new
     @content = Content.new
-    @genre = Genre.all
-    @category = Category.all
+    @genre = Genre.find(params[:genre_id])
+    @categories = Category.where(genre_id: @genre.id)
   end
 
   # GET /contents/1/edit
   def edit
-    @genre = Genre.all
-    @category = Category.all
+    @genres = Genre.all
+    @genre = Genre.find(params[:id])
+    @categories = Category.where(genre_id: @genre.id)
   end
 
   # POST /contents or /contents.json
@@ -65,6 +67,13 @@ class ContentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_content
       @content = Content.find(params[:id])
+    end
+
+    def side_bar
+      @genres = Genre.all
+      @category = Category.all
+      @contents = Content.order(updated_at: :desc).limit(3)
+      @posts = Post.order(updated_at: :desc).limit(3)
     end
 
     # Only allow a list of trusted parameters through.

@@ -12,24 +12,52 @@
   <% end %>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.hidden_field :genre_id, value: @genre.ids %>
+  <%= form.hidden_field :genre_id, value: @genre.id %>
 
-  <div>
-    <%= form.label :category_id, style: "display: block" %>
-    <%= form.select :category_id, Category.all.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
-  </div>
+  <div class="form_field">
+    <%= form.label :category_id, "カテゴリ：", style: "display: block" %>
+    <span class="next_colon">
+      <% if (@genre.id === 1) %>
+        <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+      <% elsif (@genre.id === 2) %>
+        <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+      <% elsif (@genre.id === 3) %>
+        <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+      <% else %>
+        <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+      <% end %>
+    </span>
+  </div><br/>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <div class="form_box">
+    <div class="form_field">
+      <%= form.label :title, "作品名：", style: "display: block" %>
+      <span class="next_colon">
+        <%= form.text_field :title %>
+      </span>
+    </div>
 
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
-  </div>
+    <div class="form_field">
+      <% if (@genre.id === 1) %>
+        <%= form.label :author, "著者名：", style: "display: block" %>
+      <% elsif (@genre.id === 2) %>
+        <%= form.label :author, "作者名：", style: "display: block" %>
+      <% elsif (@genre.id === 3) %>
+        <%= form.label :author, "監督名・出演者名：", style: "display: block" %>
+      <% else %>
+        <%= form.label :author, "アーティスト名：", style: "display: block" %>
+      <% end %>
+      <span class="next_colon">
+        <%= form.text_field :author %>
+      </span>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div>
+      <% if (controller.action_name == 'new') %>
+        <%= form.submit "登録", class: "actions_btn" %>
+      <% else %>
+        <%= form.submit "更新", class: "actions_btn" %>
+      <% end %>
+    </div>
   </div>
 <% end %>
