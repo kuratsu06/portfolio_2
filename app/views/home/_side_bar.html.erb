@@ -30,7 +30,9 @@
             </summary>
             <ul>
               <% category.contents.each do |content| %>
-                <li class="content_name"><%= content.title %><span>(<%= content.posts.count %>)</span></li>
+                <%= link_to contents_path({ search: content.title}) do %>
+                  <li class="content_name"><%= content.title %><span>(<%= content.posts.count %>)</span></li>
+                <% end %>
               <% end %>
             </ul>
           </details>

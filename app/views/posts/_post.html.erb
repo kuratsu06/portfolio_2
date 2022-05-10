@@ -1,27 +1,34 @@
 <div id="<%= dom_id post %>">
-  <p>
-    <strong>投稿日：</strong>
-    <%= post.created_at.strftime('%Y年 %m月 %d日') %>
-  </p>
-
-  <p>
-    <strong>カテゴリ：</strong>
-    <%= post.category.name %>
-  </p>
-
-  <p>
-    <strong>コンテンツ：</strong>
-    <%= post.content.title %>
-  </p>
-
-  <p>
-    <strong>サブタイトル：</strong>
-    <%= post.subtitle %>
-  </p>
-
-  <p>
-    <strong>日記：</strong>
-    <%= post.diary %>
-  </p>
-
+  <div class="index_box">
+    <p>
+      <strong>投稿日：</strong>
+      <span class="next_colon"><%= post.created_at.strftime('%Y年 %m月 %d日') %></span>
+    </p>
+    <p>
+      <strong>カテゴリ：</strong>
+      <span class="next_colon"><%= post.category.name %></span>
+    </p>
+    <p>
+      <strong>コンテンツ：</strong>
+      <span class="next_colon"><%= post.content.title %></span>
+    </p>
+    <p>
+      <strong>サブタイトル：</strong>
+      <span class="next_colon"><%= post.subtitle %></span>
+    </p>
+    <p>
+      <strong>日記：</strong>
+      <span class="next_colon"><%= post.diary %></span>
+    </p>
+    <div class="links">
+      <% if (controller.action_name == 'index') %>
+        <%= link_to "詳細", post %>
+        <%= link_to "編集", edit_post_path(post, category_id: post.category.id, content_id: post.content.id, content_title: post.content.title) %>
+        <%= button_to "削除", post, method: :delete %>
+      <% else %>
+        <%= link_to "編集", edit_post_path(post, category_id: post.category.id, content_id: post.content.id, content_title: post.content.title) %>
+        <%= button_to "削除", post, method: :delete %>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -6,7 +6,7 @@ class Content < ApplicationRecord
 
   def self.search(search)
     if search
-      Content.where(['title LIKE ?', "%#{search}%"])
+      Content.joins(:category).where(['title LIKE ? OR author LIKE ? OR name LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
     else
       Content.all
     end

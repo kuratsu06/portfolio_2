@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,25 +9,22 @@
       </ul>
     </div>
   <% end %>
-
   <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.hidden_field :genre_id, value: @genre.ids %>
-  <%= form.hidden_field :category_id, value: @category.ids %>
-
+  <%= form.hidden_field :category_id, value: @category.id %>
+  <%= form.hidden_field :content_id, value: @content.id %>
   <div class="form_box">
     <div class="form_field">
-      <%= form.label :content_id, "コンテンツ：", style: "display: block" %>
+      <label>コンテンツ：</label>
       <span class="next_colon">
-        <%= form.select :content_id, Content.all.map{ |content| [content.title, content.id] }, include_blank: "選択して下さい" %>
+        <%= @content_title %>
+      </span>
     </div>
-
     <div class="form_field">
       <%= form.label :subtitle, "サブタイトル：", style: "display: block" %>
       <span class="next_colon">
         <%= form.text_field :subtitle %>
       </span>
     </div>
-
     <div>
       <% if (controller.action_name == 'new') %>
         <%= form.submit "登録", class: "actions_btn" %>
@@ -36,8 +32,7 @@
         <%= form.submit "更新", class: "actions_btn" %>
       <% end %>
     </div>
-  </div><br/>
-  
+  </div><br/> 
   <div class="form_field2">
     <%= form.label :diary, "日記：", style: "display: block" %>
     <span class="next_colon">

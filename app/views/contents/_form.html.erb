@@ -2,7 +2,6 @@
   <% if content.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(content.errors.count, "error") %> prohibited this content from being saved:</h2>
-
       <ul>
         <% content.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,25 +9,26 @@
       </ul>
     </div>
   <% end %>
-
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :genre_id, value: @genre.id %>
-
   <div class="form_field">
     <%= form.label :category_id, "カテゴリ：", style: "display: block" %>
     <span class="next_colon">
-      <% if (@genre.id === 1) %>
-        <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
-      <% elsif (@genre.id === 2) %>
-        <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
-      <% elsif (@genre.id === 3) %>
-        <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+      <% if (controller.action_name == 'new') %>
+        <% if (@genre.id === 1) %>
+          <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+        <% elsif (@genre.id === 2) %>
+          <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+        <% elsif (@genre.id === 3) %>
+          <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+        <% else %>
+          <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+        <% end %>
       <% else %>
-        <%= form.select :category_id, @categories.map{ |category| [category.name, category.id] }, include_blank: "選択して下さい" %>
+        <%= content.category.name %>
       <% end %>
     </span>
   </div><br/>
-
   <div class="form_box">
     <div class="form_field">
       <%= form.label :title, "作品名：", style: "display: block" %>
@@ -36,7 +36,6 @@
         <%= form.text_field :title %>
       </span>
     </div>
-
     <div class="form_field">
       <% if (@genre.id === 1) %>
         <%= form.label :author, "著者名：", style: "display: block" %>
@@ -51,7 +50,6 @@
         <%= form.text_field :author %>
       </span>
     </div>
-
     <div>
       <% if (controller.action_name == 'new') %>
         <%= form.submit "登録", class: "actions_btn" %>

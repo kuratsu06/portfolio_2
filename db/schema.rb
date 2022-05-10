@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_06_130146) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_07_162221) do
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "genre_id", null: false
@@ -42,7 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_130146) do
 
   create_table "posts", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "genre_id", null: false
     t.bigint "category_id", null: false
     t.bigint "content_id", null: false
     t.string "subtitle", default: "no title", null: false
@@ -51,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_130146) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["content_id"], name: "index_posts_on_content_id"
-    t.index ["genre_id"], name: "index_posts_on_genre_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -74,6 +72,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_130146) do
   add_foreign_key "contents", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "contents"
-  add_foreign_key "posts", "genres"
   add_foreign_key "posts", "users"
 end

@@ -1,36 +1,35 @@
 <div class="top_page">
   <%= render 'home/side_bar' %>
-
   <div class="main_content">
     <p class="notice"><%= notice %></p>
     <!--<p class="alert"><%= alert %></p>-->
     <div class="content_box">
       <h3>最近登録したコンテンツ</h3>
-      <div class="index">
-        <% @contents.each do |content| %>
+      <% @contents.each do |content| %>
+        <div class="index_box">
           <p>作成日：<%= content.created_at.strftime('%Y年 %m月 %d日') %></p>
           <p>作品タイトル：<%= content.title %></p>
           <div class="links">
-            <%= link_to "編集", edit_content_path(content, @genres) %> |
-            <%= link_to "削除", content, method: :delete, data: { confirm: "本当によろしいですか？" } %>
+            <%= link_to "編集", edit_content_path(content, genre_id: content.genre_id, category_id: content.category.id) %>
+            <%= button_to "削除", content, method: :delete %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
     <div class="content_box">
       <h3>最近投稿した日記</h3>
-      <div class="index">
-        <% @posts.each do |post| %>
+      <% @posts.each do |post| %>
+        <div class="index_box">
           <p>投稿日：<%= post.created_at.strftime('%Y年 %m月 %d日') %></p>
           <p>サブタイトル：<%= post.subtitle %></p>
           <p>日記：<%= post.diary %></p>
           <div class="links">
-            <%= link_to "詳細", post_path(post) %> |
-            <%= link_to "編集", edit_post_path(post, @genres) %> |
-            <%= link_to "削除", post, method: :delete, data: { confirm: "本当によろしいですか？" } %>
+            <%= link_to "詳細", post_path(post) %>
+            <%= link_to "編集", edit_post_path(post, category_id: post.category.id, content_id: post.content.id, content_title: post.content.title) %>
+            <%= button_to "削除", post, method: :delete %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

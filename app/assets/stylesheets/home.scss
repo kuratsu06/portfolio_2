@@ -44,7 +44,13 @@
 	margin: 20px auto 20px 20px;
 }
 
-.category_name span {
+.content_name {
+  font-size: 16px;
+  margin: 20px;
+}
+
+.category_name span,
+.content_name span {
 	margin-left: 10px;
 }
 
@@ -75,16 +81,21 @@
 	margin: 10px 50px;
 }
 
-.index {
-	border-bottom:3px #808080 solid ;
-}
-
 .links {
-	margin-left: 600px;
+  display: flex;
+	margin-left: 550px;
 }
 
-.links a {
+.links a, .links button {
+  color: #fff;
 	font-size: 16px;
+  background-color: #000;
+  border: 1px #000 solid;
 	margin: 10px;
+  padding: 6px 8px;
 }
 
+.links a:hover,
+.links button:hover {
+  color: #fff;
+}

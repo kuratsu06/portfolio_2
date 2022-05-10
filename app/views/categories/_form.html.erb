@@ -2,7 +2,6 @@
   <% if category.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
       <ul>
         <% category.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,9 +9,7 @@
       </ul>
     </div>
   <% end %>
-
   <%= form.hidden_field :user_id, value: current_user.id %>
-  
   <div class="form_box">
     <div class="form_field">
       <%= form.label :genre_id, "ジャンル：", style: "display: block" %>
@@ -20,14 +17,12 @@
         <%= form.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id] }, include_blank: "選択して下さい" %>
       </span>
     </div>
-
     <div class="form_field">
       <%= form.label :name, "カテゴリ名：", style: "display: block" %>
       <span class="next_colon">
         <%= form.text_field :name %>
       </span>
     </div>
-  
     <div>
       <% if (controller.action_name == 'new') %>
         <%= form.submit "登録", class: "actions_btn" %>
