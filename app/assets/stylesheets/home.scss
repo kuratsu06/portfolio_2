@@ -45,8 +45,13 @@
 }
 
 .content_name {
+  color: #000;
   font-size: 16px;
   margin: 20px;
+}
+
+.content_name a:hover {
+  color: #000;
 }
 
 .category_name span,
@@ -83,10 +88,11 @@
 
 .links {
   display: flex;
-	margin-left: 550px;
+  align-items: center;
+	margin-left: 500px;
 }
 
-.links a, .links button {
+.links a, .links button, .new_btn a {
   color: #fff;
 	font-size: 16px;
   background-color: #000;
@@ -95,7 +101,26 @@
   padding: 6px 8px;
 }
 
+.new_btn a:hover,
 .links a:hover,
 .links button:hover {
   color: #fff;
+}
+
+@media screen and (max-width: 1024px) {
+	.side_bar,
+	.content_box {
+    width: auto;
+  }
+
+  .category_name {
+    font-size: 16px;
+    font-weight: bolder;
+  }
+	
+  .links {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+  }
 }

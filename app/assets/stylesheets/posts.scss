@@ -7,3 +7,13 @@
   width: 700px;
   min-height: 100vh;
 }
+
+@media screen and (max-width: 1024px) {
+  .form_field2 {
+    display: block;
+  }
+
+  .form_field2 textarea {
+    width: 100%;
+  }
+}

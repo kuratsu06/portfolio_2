@@ -24,8 +24,8 @@
       <% end %>
       <span class="next_colon"><%= content.author %></span>
     </p>
-    <%= link_to "日記を書く", new_post_path(content_id: content.id, content_title: content.title, category_id: content.category_id) %>
     <div class="links">
+      <%= link_to "日記を書く", new_post_path(content_id: content.id, content_title: content.title, category_id: content.category_id) %>
       <%= link_to "編集", edit_content_path(content, genre_id: content.genre_id, category_id: content.category.id) %>
       <%= button_to "削除", content, method: :delete %>
     </div>

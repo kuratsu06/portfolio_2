@@ -19,6 +19,10 @@
   margin-right: 20px;
 }
 
+.content_title a:hover {
+  color: #fff;
+}
+
 .index_box {
   border-bottom: 2px #808080 solid;
 }
@@ -32,6 +36,11 @@
   margin-top: 10px;
   margin-right: 20px;
   float: right;
+}
+
+.back a,
+.back a:hover {
+  color: #000;
 }
 
 .new_form {
@@ -56,4 +65,63 @@
   background-color: #000;
   border: 1px #000 solid;
   padding: 8px 10px;
+}
+
+@media screen and (max-width: 767px) {
+	.content_title {
+    display: block;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .content_title h3,
+  .form_box input[type = submit] {
+    margin: 20px auto;
+  }
+
+  .content_title a,
+  .next_colon {
+    margin: auto;
+  }
+
+  .responsive {
+    margin-bottom: 10px;
+  }
+
+  .new_btn,
+  .form_box,
+  .form_field {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	.content_title {
+    display: block;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+  .content_title h3,
+  .form_box input[type = submit] {
+    margin: 20px auto;
+  }
+
+  .content_title a,
+  .next_colon {
+    margin: auto;
+  }
+
+  .responsive {
+    width: 25%;
+    float: left;
+  }
+
+  .form_box {
+    display: block;
+  }
+
+  .form_field {
+    margin-bottom: 10px;
+  }
 }

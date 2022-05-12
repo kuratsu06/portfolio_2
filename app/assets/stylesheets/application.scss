@@ -22,6 +22,10 @@ body {
   min-height: 100vh;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .header {
   max-width: 100%;
   height: 100px;
@@ -43,6 +47,7 @@ body {
 }
 
 .header_bar_right a {
+  color: #000;
   text-decoration: none;
 }
 
@@ -86,4 +91,17 @@ body {
   max-width: 100%;
   height: 50px;
   background-color: #000;
+}
+
+@media screen and (max-width: 767px) {
+	.header {
+    height: 150px;
+    text-align: center;
+    display: block;
+  }
+
+  .header_bar_left,
+  .header_bar_right {
+    margin: auto;
+  }
 }

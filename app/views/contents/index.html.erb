@@ -4,10 +4,18 @@
     <p style="color: green"><%= notice %></p>
     <div class="content_title">
       <h3>コンテンツ一覧</h3>
-      <%= link_to "NOVEL 登録", new_content_path(genre_id: 1) %>
-      <%= link_to "COMIC 登録", new_content_path(genre_id: 2) %>
-      <%= link_to "MOVIE 登録", new_content_path(genre_id: 3) %>
-      <%= link_to "MUSIC 登録", new_content_path(genre_id: 4) %>
+      <div class="responsive">
+        <%= link_to "NOVEL 登録", new_content_path(genre_id: 1), class: "new_btn" %>
+      </div>
+      <div class="responsive">
+        <%= link_to "COMIC 登録", new_content_path(genre_id: 2), class: "new_btn" %>
+      </div>
+      <div class="responsive">
+        <%= link_to "MOVIE 登録", new_content_path(genre_id: 3), class: "new_btn" %>
+      </div>
+      <div class="responsive">
+        <%= link_to "MUSIC 登録", new_content_path(genre_id: 4), class: "new_btn" %>
+      </div>
     </div>
     <div id="contents" class="content_box">
       <% @contents.each do |content| %>
