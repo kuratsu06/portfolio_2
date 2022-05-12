@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_category, only: %i[ show edit update destroy ]
-  before_action :side_bar, only: %i[ index new ]
+  before_action :set_category, only: %i(show edit update destroy)
+  before_action :side_bar, only: %i(index new)
 
   # GET /categories or /categories.json
   def index
@@ -62,24 +62,25 @@ class CategoriesController < ApplicationController
   end
 
   private
-    def move_to_signed_in
-      unless user_signed_in?
-        redirect_to new_user_session_path
-      end
-    end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
+  def move_to_signed_in
+    unless user_signed_in?
+      redirect_to new_user_session_path
     end
+  end
 
-    def side_bar
-      @genres = Genre.all
-      @category = Category.all
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def category_params
-      params.require(:category).permit(:user_id, :genre_id, :name)
-    end
+  def side_bar
+    @genres = Genre.all
+    @category = Category.all
+  end
+
+  # Only allow a list of trusted parameters through.
+  def category_params
+    params.require(:category).permit(:user_id, :genre_id, :name)
+  end
 end

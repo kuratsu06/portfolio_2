@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :category do
-    user { nil }
-    genre { nil }
     name { "MyString" }
+    association :user
+    association :genre
   end
 end

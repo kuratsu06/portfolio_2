@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_content, only: %i[ show edit update destroy ]
-  before_action :side_bar, only: %i[ index new edit ]
+  before_action :set_content, only: %i(show edit update destroy)
+  before_action :side_bar, only: %i(index new edit)
 
   # GET /contents or /contents.json
   def index
@@ -64,24 +64,25 @@ class ContentsController < ApplicationController
   end
 
   private
-    def move_to_signed_in
-      unless user_signed_in?
-        redirect_to new_user_session_path
-      end
-    end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_content
-      @content = Content.find(params[:id])
+  def move_to_signed_in
+    unless user_signed_in?
+      redirect_to new_user_session_path
     end
+  end
 
-    def side_bar
-      @genres = Genre.all
-      @category = Category.all
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_content
+    @content = Content.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def content_params
-      params.require(:content).permit(:user_id, :genre_id, :category_id, :title, :author)
-    end
+  def side_bar
+    @genres = Genre.all
+    @category = Category.all
+  end
+
+  # Only allow a list of trusted parameters through.
+  def content_params
+    params.require(:content).permit(:user_id, :genre_id, :category_id, :title, :author)
+  end
 end

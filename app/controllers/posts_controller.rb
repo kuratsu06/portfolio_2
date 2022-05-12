@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :side_bar, only: %i[ index new show ]
+  before_action :set_post, only: %i(show edit update destroy)
+  before_action :side_bar, only: %i(index new show)
 
   # GET /posts or /posts.json
   def index
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @category = Category.find(params[:category_id])
     @content = Content.find(params[:content_id])
-    @content_title = (params[:content_title])
+    @content_title = params[:content_title]
   end
 
   # GET /posts/1/edit
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     @genres = Genre.all
     @category = Category.find(params[:category_id])
     @content = Content.find(params[:content_id])
-    @content_title = (params[:content_title])
+    @content_title = params[:content_title]
   end
 
   # POST /posts or /posts.json
@@ -70,24 +70,25 @@ class PostsController < ApplicationController
   end
 
   private
-    def move_to_signed_in
-      unless user_signed_in?
-        redirect_to new_user_session_path
-      end
-    end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
+  def move_to_signed_in
+    unless user_signed_in?
+      redirect_to new_user_session_path
     end
+  end
 
-    def side_bar
-      @genres = Genre.all
-      @category = Category.all
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:user_id, :category_id, :content_id, :subtitle, :diary)
-    end
+  def side_bar
+    @genres = Genre.all
+    @category = Category.all
+  end
+
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:user_id, :category_id, :content_id, :subtitle, :diary)
+  end
 end
