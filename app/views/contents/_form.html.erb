@@ -1,6 +1,6 @@
 <%= form_with(model: content) do |form| %>
   <% if content.errors.any? %>
-    <div style="color: red">
+    <div class="alert">
       <h2><%= pluralize(content.errors.count, "error") %> prohibited this content from being saved:</h2>
       <ul>
         <% content.errors.each do |error| %>

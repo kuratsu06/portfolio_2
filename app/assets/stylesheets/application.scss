@@ -60,26 +60,17 @@ a:hover {
   padding: 8px;
 }
 
-.notice,
-.flash_success {
+.notice {
   color: #008000;
   font-size: 20px;
   background-color: #ccffcc;
   text-align: center;
 }
 
-.alert,
-.flash_failure {
+.alert {
   color: #f00;
   font-size: 20px;
   background-color: #ffcccc;
-  text-align: center;
-}
-
-.flash_delete {
-  color: #00f;
-  font-size: 20px;
-  background-color: #c2eeff;
   text-align: center;
 }
 
