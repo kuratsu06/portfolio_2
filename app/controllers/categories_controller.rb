@@ -1,15 +1,11 @@
 class CategoriesController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_category, only: %i(show edit update destroy)
+  before_action :set_category, only: %i(edit update destroy)
   before_action :side_bar, only: %i(index new)
 
   # GET /categories or /categories.json
   def index
     @categories = Category.search(params[:search]).order(updated_at: :desc)
-  end
-
-  # GET /categories/1 or /categories/1.json
-  def show
   end
 
   # GET /categories/new

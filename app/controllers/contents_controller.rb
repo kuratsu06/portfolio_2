@@ -1,15 +1,11 @@
 class ContentsController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_content, only: %i(show edit update destroy)
+  before_action :set_content, only: %i(edit update destroy)
   before_action :side_bar, only: %i(index new edit)
 
   # GET /contents or /contents.json
   def index
     @contents = Content.search(params[:search]).order(updated_at: :desc)
-  end
-
-  # GET /contents/1 or /contents/1.json
-  def show
   end
 
   # GET /contents/new
