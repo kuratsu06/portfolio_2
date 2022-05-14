@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.search(params[:search]).order(updated_at: :desc)
+    @categories = Category.search(params[:search]).where(user_id: current_user.id).order(updated_at: :desc).where(user_id: current_user.id)
   end
 
   # GET /categories/new

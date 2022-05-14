@@ -5,14 +5,14 @@ class ContentsController < ApplicationController
 
   # GET /contents or /contents.json
   def index
-    @contents = Content.search(params[:search]).order(updated_at: :desc)
+    @contents = Content.search(params[:search]).where(user_id: current_user.id).order(updated_at: :desc)
   end
 
   # GET /contents/new
   def new
     @content = Content.new
     @genre = Genre.find(params[:genre_id])
-    @categories = Category.where(genre_id: @genre.id)
+    @categories = Category.where(user_id: current_user.id, genre_id: @genre.id)
   end
 
   # GET /contents/1/edit

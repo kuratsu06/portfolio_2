@@ -24,18 +24,20 @@
       <summary><div class="genre_name"><%= genre.name %></div></summary>
       <ui>
         <% genre.categories.each do |category| %>
-          <details>
-            <summary>
-              <li class="category_name"><%= category.name %><span>(<%= category.posts.count %>)</span></li>
-            </summary>
-            <ul>
-              <% category.contents.each do |content| %>
-                <%= link_to contents_path({ search: content.title}) do %>
-                  <li class="content_name"><%= content.title %><span>(<%= content.posts.count %>)</span></li>
+          <% if user_signed_in? && category.user_id === current_user.id %>
+            <details>
+              <summary>
+                <li class="category_name"><%= category.name %><span>(<%= category.posts.count %>)</span></li>
+              </summary>
+              <ul>
+                <% category.contents.each do |content| %>
+                  <%= link_to contents_path({ search: content.title}) do %>
+                    <li class="content_name"><%= content.title %><span>(<%= content.posts.count %>)</span></li>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </ul>
-          </details>
+              </ul>
+            </details>
+          <% end %>
         <% end %>
       </ul>
     </details>

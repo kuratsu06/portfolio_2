@@ -3,9 +3,9 @@ class HomeController < ApplicationController
 
   def top
     @genres = Genre.all
-    @categories = Category.all
-    @contents = Content.order(updated_at: :desc).limit(3)
-    @posts = Post.order(updated_at: :desc).limit(3)
+    @categories = Category.where(user_id: current_user.id)
+    @contents = Content.where(user_id: current_user.id).order(updated_at: :desc).limit(3)
+    @posts = Post.where(user_id: current_user.id).order(updated_at: :desc).limit(3)
   end
 
   private

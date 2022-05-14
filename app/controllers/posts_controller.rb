@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.search(params[:search]).order(updated_at: :desc)
+    @posts = Post.search(params[:search]).where(user_id: current_user.id).order(updated_at: :desc)
     @categories = Category.where(genre_id: @genres.ids)
   end
 
