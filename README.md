@@ -1,24 +1,19 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## アプリケーション名
+「Content Diary」  
+## アプリケーション概要
+本を読んだり、音楽を聞いたり、映画を観たあとに感想を書ける日記のアプリケーションです。  
+メモ代わりにも使えると思うので、「昔読んだ本ってどんな内容だったかな？」というときや、  
+「こんなシーンがあった映画って何て名前だったかな」という調べ方もできます。  
+同じ作品で何度でも日記を残せるので、作品に対して違った印象を持ったときにも感想として  
+その都度書き記すことができます。  
+## URL
+https://git.heroku.com/portfolio-content-diary.git
+## 利用方法
+「NOVEL・COMIC・MOVIE・MUSIC」の中からジャンルを選び、カテゴリ名を入力します。  
+自分で作成したカテゴリから選んだあと、作品名・著者名などを入力します。  
+作品ページから日記を作成します。  
+【例】カテゴリ名：指輪物語  
+　　　作品名：第1部「指輪、世に出る」、著者名：J・R・R・トールキン  
+## データベース設計
+./ER.png
