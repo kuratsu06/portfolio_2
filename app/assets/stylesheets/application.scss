@@ -13,9 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
-@import "bootstrap-sprockets";
-
 body {
   display: flex;
   flex-flow: column;
