@@ -11,7 +11,6 @@ module Portfolio2
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.i18n.default_locale = :ja
-    config.assets.initialize_on_precompile = false
 
     config.generators do |g|
       g.test_framework :rspec, 
