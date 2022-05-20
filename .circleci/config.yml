@@ -18,8 +18,11 @@ jobs:
             docker-compose up -d
             docker exec portfolio_2_app curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:3000
       - run:
+          name: "bundle install"
+          command: bundle install --path vendor/bundle
+      - run:
           name: Run rspec
-          command: docker-compose exec portfolio_2 rspec
+          command: bundle exec rspec
 
   rubocop:
     working_directory: ~/portfolio_2
