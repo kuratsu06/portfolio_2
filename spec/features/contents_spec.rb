@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "contents", type: :feature do
   describe '新規作成と更新' do
-    let(:content) { create(:content) }
     let(:user) { create(:user) }
+    let(:content) { create(:content, user_id: user.id) }
     let(:genre) { create(:genre) }
 
     scenario 'ログインしないと、コンテンツページを見れない' do

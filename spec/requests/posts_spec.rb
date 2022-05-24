@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "posts", type: :request do
   describe 'HTTPリクエスト /URL' do
-    let!(:post) { create(:post) }
     let(:user) { create(:user) }
+    let!(:post) { create(:post, user_id: user.id) }
     let(:category) { create(:category) }
     let(:content) { create(:content) }
 

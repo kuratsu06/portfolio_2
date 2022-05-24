@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "posts", type: :feature do
   describe '新規作成と更新' do
-    let(:post) { create(:post) }
     let(:user) { create(:user) }
-    let(:content) { create(:content) }
+    let(:post) { create(:post, user_id: user.id) }
+    let(:content) { create(:content, user_id: user.id) }
 
     scenario 'ログインしないと、日記ページを見れない' do
       visit posts_path

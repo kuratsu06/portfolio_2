@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "categories", type: :feature do
   describe '新規作成と更新' do
-    let(:category) { create(:category) }
     let(:user) { create(:user) }
+    let(:category) { create(:category, user_id: user.id) }
 
     scenario 'ログインしないと、カテゴリページを見れない' do
       visit categories_path
