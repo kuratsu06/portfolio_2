@@ -3,7 +3,7 @@ jobs:
   rspec:
     working_directory: ~/portfolio_2
     docker:
-      - image: circleci/ruby:2.7.5
+      - image: cimg/ruby:2.7.5-node
     steps:
       - checkout
       - setup_remote_docker

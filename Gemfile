@@ -51,7 +51,6 @@ gem "sassc-rails"
 gem 'rails-i18n'
 gem 'jquery-rails'
 gem 'terser'
-gem 'mini_racer'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise-i18n'
