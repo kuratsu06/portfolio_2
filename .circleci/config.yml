@@ -1,28 +1,40 @@
 version: 2.1
 jobs:
   rspec:
-    working_directory: ~/portfolio_2
     docker:
-      - image: cimg/ruby:2.7.5-node
+    - image: cimg/ruby:2.7.5-node
+      environment:
+        - BUNDLER_VERSION: 2.3.12
+        - RAILS_ENV: 'test'
+    - image: circleci/mysql:8.0
+      environment:
+        - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+        - MYSQL_ROOT_HOST: '127.0.0.1'
+    working_directory: ~/portfolio_2 
     steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Setup environment variable
-          command:
-            echo "export COMPOSE_FILE=docker-compose.yml" >> $BASH_ENV
-      - run:
-          name: Start containers and verify it is working
-          command:
-            set -x
-            docker-compose up -d
-            docker exec portfolio_2_app curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:3000
-      - run:
-          name: "bundle install"
-          command: bundle install --path vendor/bundle
-      - run:
-          name: Run rspec
-          command: bundle exec rspec
+    - checkout
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "Gemfile.lock" }}
+        - v1-dependencies-
+    - run:
+        name: install dependencies
+        command: |
+          gem install bundler -v 2.3.12
+          bundle install --jobs=4 --retry=3 --path vendor/bundle
+    - save_cache:
+        paths:
+        - ./vendor/bundle
+        key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+    - run: mv ./config/database.yml.ci ./config/database.yml
+    - run:
+        name: Database setup
+        command: |
+           bundle exec rake db:create
+           bundle exec rake db:schema:load
+    - run:
+        name: Run rspec
+        command: bundle exec rspec
 
   rubocop:
     working_directory: ~/portfolio_2
