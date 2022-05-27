@@ -8,7 +8,7 @@
 同じ作品で何度でも日記を残せるので、作品に対して違った印象を持ったときにも感想として  
 その都度書き記すことができます。  
 ## URL
-https://portfolio-content-diary.herokuapp.com
+https://content-diary.herokuapp.com/portfolio_2
 ## 利用方法
 「NOVEL・COMIC・MOVIE・MUSIC」の中からジャンルを選び、カテゴリ名を入力します。  
 自分で作成したカテゴリから選んだあと、作品名・著者名などを入力します。  
