@@ -16,4 +16,4 @@ https://content-diary.herokuapp.com/portfolio_2
 【例】カテゴリ名：指輪物語  
 　　　作品名：第1部「指輪、世に出る」、著者名：J・R・R・トールキン  
 ## データベース設計
-ER.png
+![Image](/ER.png)
